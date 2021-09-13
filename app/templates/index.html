@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to The Best News Article Website Online</title>
-        {% endif %}
-    </head>
-    <body>
-
-    </body>
+    {% block title %}Welcome to the Best News Article Website Online{% endblock %}
+    {% block content%}
+      <ul>
+        <h2>News Headlines<h2>
+      {% for headline in headline %}
+      <li> {{ article.title }}</li>
+        {% endfor %}
+        {% for headline in headline %}
+      <li> {{ article.description }}</li>
+        {% endfor %}
+        {% for headline in headline %}
+      <li> {{ article.date }}</li>
+        {% endfor %}
+        {% for headline in headline %}
+      <li> {{ article.author }}</li>
+        {% endfor %}
+        </ul>
+      <div class="card">
+        <img src="{{article.image}}" class="card-img-top">
+      </div>
+    {%endblock%}
 </html>

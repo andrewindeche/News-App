@@ -1,9 +1,17 @@
 from flask import Flask
 from .config import DevConfig
+from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__,instance_relative_config = True)
+def create_app(config_name):
 
-app.config.from_object(DevConfig)
-app.config.from_pyfile('config.py')
+    app = Flask(__name__,instance_relative_config = True)
 
-from app import views
+    app.config.from_object(DevConfig)
+    app.config.from_pyfile('config.py')
+
+
+     # Initializing flask extensions
+    bootstrap.init_app(app)
+    db.init_app(app)
+
+    return app
