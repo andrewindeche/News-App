@@ -9,7 +9,7 @@ def homepage():
     '''
     source= sources()
     trending_article=headlines()
-    return render_template('index.html',source = source,headlines = headlines)
+    return render_template('index.html',news_sources = news_source,headlines = headlines, trending_article=trending_article)
 
 
 @main.route('/article/<id>')
@@ -18,7 +18,7 @@ def article(id):
      View article page function that returns the news details page and its data
      '''
      article_source = article(id)
-     return render_template('article.html',source=source)
+     return render_template('article.html',article_source=article_source)
 
 @main.route("/favicon.ico")
 def favicon():
