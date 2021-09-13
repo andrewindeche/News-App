@@ -1,7 +1,7 @@
 from flask_script import Manager,Server
 from app import create_app
 
-app = Flask(__name__)
+app = create_app('dev')
 
 manager = Manager(app)
 manager.add_command('server', Server)
@@ -14,4 +14,4 @@ def test():
 
 
 if __name__ == '__main__':
-    app.run(debug=True,port=4996)
+    app.run(debug=True,port=8000)
