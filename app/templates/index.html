@@ -1,25 +1,31 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    {% block title %}Welcome to the Best News Article Website Online{% endblock %}
+{% extends "base.html" %}
+
+    {% block title %}THE KENYAN TRIBINE{% endblock %}
     {% block content%}
-      <ul>
-        <h2>News Headlines<h2>
-      {% for headline in headline %}
-      <li> {{ article.title }}</li>
+    {% block content %}
+<div class="container">
+    <!-- sources -->
+    <div class="nav-scroller bg-dark p-0">
+        <nav class="d-flex wrap justify-content-between">
+            {% for item in news_sources%}
+            <a href="/articles/{{item.id}}" class="p-2 text-light">{{item.name | upper }}</a> {% endfor %}
+        </nav>
+    </div>
+
+    <!-- trending -->
+    <div class="row hidden-md-up mt-3">
+        {% for article in trending_article %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-block">
+                    <img src="{{article.url_to_image}}" class="card-img-top" alt="">
+                    <a href="{{article.url}} " class="card-link">
+                        <p class="card-text text-secondary">{{ article.title }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-        {% for headline in headline %}
-      <li> {{ article.description }}</li>
-        {% endfor %}
-        {% for headline in headline %}
-      <li> {{ article.date }}</li>
-        {% endfor %}
-        {% for headline in headline %}
-      <li> {{ article.author }}</li>
-        {% endfor %}
-        </ul>
-      <div class="card">
-        <img src="{{article.image}}" class="card-img-top">
-      </div>
-    {%endblock%}
-</html>
+    </div>
+    {% endblock %}
+</div>

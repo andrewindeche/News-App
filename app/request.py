@@ -1,35 +1,43 @@
 import urllib.request,json
-from .models import Article,Category,Sources,Headlines
-from newsapi import NewsAPiClient
+from .models import Article,Sources,Headlines
 
 api_key = None
 base_url = None
-newsapi = None
+
 
 def configure_request(app):
-    global api_key,base_url,newsapi
-    api_key = app.config['NEWS_API_KEY']
+    global api_key,base_url
+    api_key = app.config['API_KEY']
     base_url = app.config['NEWS_API_BASE_URL']
-    newsapi = NewsApiClient(api_key=key)
-
 
 def sources():
     '''
-    Function that gets the json response to url request
+    function that gets all english nes sources in a list
     '''
-    get_source_url= source_url.format(api_key)
-    # print(get_source_url)
-    with urllib.request.urlopen(get_source_url) as url:
-        get_source_data = url.read()
-        get_source_response = json.loads(get_sources_data)
+    data = newsapi.get_sources(language='en',country='ca')
+    data_list = data['sources']
+    source_list=[]
+    for item in data_list:
+        new_source = Sources(item['id'], item['name'])
+        source_list.append(new_source)
 
-        source_results = None
+    return source_list
 
-        if get_source_response['source']:
-            source_results_list = get_sources_response['source']
-            source_results = process_results(source_results_list)
+def articles(source_id):
+    '''
+    function that gets all english news sources in a list
+    '''
+    source_url = url.format(source_id, key)
+    with urllib.request.urlopen(source_url) as uri:
+        result = uri.read()
+        response = json.loads(result)
 
-    return source_results
+        article_results = []
+
+        if response['articles']:
+            source_data_list = response['articles']
+            article_results = get_data(source_data_list)
+    return article_results
 
 def article_source(id):
     article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
@@ -78,26 +86,20 @@ def headlines():
 def process_results(article_list):
     '''
     Function  that processes the article result and transform them to a list of Objects
-
-    Args:
-        article_list: A list of dictionaries that contain article details
-
-    Returns :
-        article_results: A list of article objects
     '''
-    article_results = []
-    for article_item in article_list:
-        id = article_item.get('id')
-        author=article_item.get('author')
-        headline = article_item.get('headline')
-        description = article_item.get('description')
-        images = article_item.get('images')
-        url = article_item.get('url')
+    '''
+    def get_data(source_dict):
+    '''
+    article_list = []
+    for item in source_dict:
+        title = item.get('title')
+        author = item.get('author')
+        description = item.get('description')
+        url = item.get('url')
+        url_to_image = item.get('urlToImage')
+        published_at = item.get('publishedAt')
 
-
-        if poster:
-            article_object = article(id,author,headline,description,images,url)
-            article_results.append(article_object)
-
-
-    return article_results
+        if url_to_image and url:
+            new_article = Articles(title, author, description, url, url_to_image, published_at)
+            article_list.append(new_article)
+    return article_list
