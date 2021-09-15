@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
 <!-- title -->
-{% block title %} OOPs ! Page not found {% endblock%}
+{% block title %} ooPs ! Page not found {% endblock%}
 
 <!-- content -->
 {% block content %}
 <div class="container-fluid">
     <div>
         <a class="text-dark ml-0 mb-4 btn btn-outline-info" href="/">
+          <p>OOPs ! Page not found</p>
+          <img src="{{ url_for('static', filename='img/404.jpg')}}" alt="logo" width="50%" class="center">
             <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-bar-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <a class="navbar-brand text-dark mx-auto" href="/"> <img src="{{ url_for('static', filename='img/error.jpg')}}" alt="logo" width="70">
-              </svg> HOME
+          </svg> CLICK TO GO BACK HOME
         </a>
     </div>
   </div>
