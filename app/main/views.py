@@ -3,10 +3,10 @@ from flask import render_template
 from ..request import sources, headlines, articles
 
 @main.route('/')
-def homepage():
+def index():
     news_sources= sources()
     trending_article = headlines()
-    return render_template("index.html", news_sources=news_sources, trending_article=trending_article)
+    return render_template("index.html", news_sources=news_sources,headlines=headlines,trending_article=trending_article)
 
 @main.route('/articles/<id>')
 def articles(id):

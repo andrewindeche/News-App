@@ -18,12 +18,47 @@
     </div>
     </div>
     <h1>Project Set-up Instructions</h1>
-     <ul>
-     <li>To clone project to use locally:GIT CLONE repository Link on terminal  </li>
-     <li> Activate Flask using command virtual/bin/activate </li>
-     <li>Install needed python packages</li>
-     <li>To run, use command Python3.9 run.py</li>
-     </ul>
+     SetUp / Installation Requirements
+Prerequisites
+python3.6
+pip
+virtualenv
+Cloning
+In your terminal:
+
+  $ git clone https://github.com/emdeechege/NewsApi/
+  $ cd NewsPI
+Running the Application
+Creating the virtual environment
+
+  $ python3.6 -m venv --without-pip virtual
+  $ source virtual/bin/env
+  $ curl https://bootstrap.pypa.io/get-pip.py | python
+Installing Flask and other Modules
+
+  $ python3.6 -m pip install Flask
+  $ python3.6 -m pip install Flask-Bootstrap
+  $ python3.6 -m pip install Flask-Script
+Setting up the API Key
+
+  To be able to gather article info from the News API you will need an API Key.
+
+  * Visit https://newsapi.org/ and register for an API key.
+  * In the root directory of the project folder create a file: start.sh
+  * Insert the following info into it:
+
+          export NEWS_API_KEY='<Your-Api-Key>'
+          python3.6 manage.py server
+
+  * Insert the API Key you received from News Api where <Your-Api-Key> is.
+To run the application, in your terminal:
+
+  $ chmod +x start.sh
+  $ ./start.sh
+Testing the Application
+To run the tests for the class files:
+
+  $ python3.6 manage.py tests
      <h1>Bugs</h1>
      <li>Flask_script refusing to open page solution:Activate the virtual form of flask with other packages in the requirements.txt</li>
      </div>
