@@ -1,15 +1,15 @@
 from flask import render_template,request,url_for
 from . import main
-from ..request import sources,article_source,get_article,headlines
+from ..request import sources,headlines,articles
 
 @main.route('/')
 def homepage():
     '''
     View root page function that returns the index page and its data
     '''
-    source= sources()
+    sources= get_sources()
     trending_article=headlines()
-    return render_template('index.html',news_sources = news_source,headlines = headlines, trending_article=trending_article)
+    return render_template('index.html',sources = news_sources,headlines = headlines, trending_article=trending_article)
 
 
 @main.route('/article/<id>')

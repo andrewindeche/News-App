@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-    {% block title %}THE KENYAN TRIBINE{% endblock %}
+    {% block title %}THE KENYAN TRIBUNE{% endblock %}
     {% block content%}
     {% block content %}
 <div class="container">
@@ -8,7 +8,7 @@
     <div class="nav-scroller bg-dark p-0">
         <nav class="d-flex wrap justify-content-between">
             {% for item in news_sources%}
-            <a href="/articles/{{item.id}}" class="p-2 text-light">{{item.name | upper }}</a> {% endfor %}
+            <a href="/articles/{{item.id}}" class="p-2 text-light">{{item.author| upper }}</a> {% endfor %}
         </nav>
     </div>
 

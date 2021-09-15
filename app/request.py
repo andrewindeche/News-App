@@ -1,24 +1,26 @@
 import urllib.request,json
 from .models import Article,Sources,Headlines
+from newsapi import NewsApiClient
 
 api_key = None
-base_url = None
-
+source_url = None
+newsapi = None
 
 def configure_request(app):
-    global api_key,base_url
+    global api_key,source_url
     api_key = app.config['API_KEY']
-    base_url = app.config['NEWS_API_BASE_URL']
+    source_url = app.config['NEWS_API_BASE_URL']
+    api = NewsApiClient(api_key=api_key)
 
 def sources():
     '''
-    function that gets all english nes sources in a list
+    function that gets all news sources in a list
     '''
-    data = newsapi.get_sources(language='en',country='ca')
+    data = newsapi.get_source(language='en',country='ca')
     data_list = data['sources']
     source_list=[]
     for item in data_list:
-        new_source = Sources(item['id'], item['name'])
+        new_source = get_source(item['id'], item['author'])
         source_list.append(new_source)
 
     return source_list
@@ -49,8 +51,8 @@ def article_source(id):
         article_source_results = None
 
         if article_source_response['articles']:
-            article_source_list = article_source_response['articles']
-            article_source_results = process_articles_results(article_source_list)
+           article_source_list = article_source_response['articles']
+           article_source_results = process_articles_results(article_source_list)
 
 
     return article_source_results
@@ -74,7 +76,7 @@ def headlines():
     '''
     Function that gets all english nes sources in a list
     '''
-    res = newsapi.get_top_headlines(language='en', page_size=6, source='cnn')
+    res = newsapi.get_top_headlines(language='en', page_size=6, sources='cnn')
     res_list =  res['articles']
     trending = []
     for item in res_list:
@@ -83,13 +85,11 @@ def headlines():
 
     return trending
 
-def process_results(article_list):
+def get_data(article_list):
     '''
     Function  that processes the article result and transform them to a list of Objects
     '''
-    '''
-    def get_data(source_dict):
-    '''
+
     article_list = []
     for item in source_dict:
         title = item.get('title')
