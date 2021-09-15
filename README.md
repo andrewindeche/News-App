@@ -6,7 +6,7 @@
      </div>
          </ul>
     <h1>Languages and Platforms Used</h1>
-         <ul>
+    <ul>
     <li>1.Python CLI/Flask to create structure of the News-APP </li>
     <li>2.Python/flask extensions such as-Python_script,NewsAPI </li>
     <li>3.Bookstrap for styling the index page </li>
@@ -24,8 +24,9 @@
      <li>Install needed python packages</li>
      <li>To run, use command Python3.9 run.py</li>
      </ul>
+     <h1>Bugs</h1>
+     <li>Flask_script refusing to open page solution:Activate the virtual form of flask with other packages in the requirements.txt</li>
      </div>
      </div>
       Copyright (c) 2021 Andrew Indeche
-   By using and/or copying this project, or the license document from which this statement is linked, you (the licensee) agree that you have read, understood, and    will comply with conditions of use.
-   View License information attached link
+   By using and/or copying this project, or the license document from which this statement is linked, you (the licensee) agree that you have read, understood, and will comply with conditions of use.

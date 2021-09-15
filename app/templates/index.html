@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-    {% block title %}THE KENYAN TRIBUNE{% endblock %}
+    {% block title %}THE TRIBUNE{% endblock %}
     {% block content%}
     {% block content %}
 <div class="container">
@@ -20,7 +20,7 @@
                 <div class="card-block">
                     <img src="{{article.url_to_image}}" class="card-img-top" alt="">
                     <a href="{{article.url}} " class="card-link">
-                        <p class="card-text text-secondary">{{ article.title }}</p>
+                        <p class="card-text text-secondary">{{ item.title }}</p>
                     </a>
                 </div>
             </div>
