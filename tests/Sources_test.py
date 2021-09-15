@@ -7,6 +7,7 @@ class SourcesTest(unittest.TestCase):
     '''
     def setUp(self):
         '''
+        Set up method that will run before every Test
         '''
         self.new_source = Sources('cnn-international','CNN')
 
