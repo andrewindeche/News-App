@@ -1,5 +1,6 @@
 import urllib.request,json
 from .models import Article,Sources,Headlines
+from newsapi import NewsApiClient
 
 api_key = None
 base_url = None
@@ -18,7 +19,7 @@ def configure_request(app):
 
 def sources():
     '''
-    function that gets all english nes sources in a list
+    function that gets all english news sources in a list
     '''
     data = newsapi.get_sources(language='en',country='ca')
     data_list = data['sources']
@@ -33,7 +34,7 @@ def headlines():
     '''
     function that gets all english nes sources in a list
     '''
-    res = newsapi.get_top_headlines(language='en', page_size=6, sources='cnn')
+    res = newsapi.get_top_headlines(language='en', page_size='6', sources='cnn')
     res_list =  res['articles']
     trending = []
     for item in res_list:
@@ -48,7 +49,7 @@ def articles(source_id):
     function that gets all english news sources in a list
     '''
     source_url = url.format(source_id, key)
-    with urllib.request.urlopen(source_url) as uri:
+    with urllib.request.urlopen(source_url) as url:
         result = uri.read()
         response = json.loads(result)
 
@@ -61,7 +62,7 @@ def articles(source_id):
 
 def get_data(source_dict):
     '''
-    function to get article list
+    function that returns results of article list
     '''
     article_list = []
     for item in source_dict:
