@@ -1,22 +1,20 @@
 from . import main
-from flask import render_template,url_for
-from .request import get_source,get_category,headlines,articles
+from flask import render_template,url_for,request,redirect
+from ..request import get_source,article_source,get_category,get_headlines
 
 @main.route('/')
 def index():
     '''
     Root function returning index/home page with data
     '''
-    global source
     source = get_source()
-    headlines = headlines()
-    trending_article = trending_article()
-    return render_template("index.html",sources=source,headlines=headlines,trending_article=trending_article)
+    headlines = get_headline()
+    return render_template("index.html",sources=source,headline=headline)
 
 @main.route('/articles/<id>')
 def articles(id):
     article_source = articles(id)
-    return render_template("articles.html",article_source=article_source,id=id)
+    return render_template("articles.html",article=article,id=id)
 
 @main.route('/categories/<cat_name>')
 def category(cat_name):

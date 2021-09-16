@@ -1,7 +1,6 @@
 import unittest
 from app.models import Article
 
-
 class ArticleTest(unittest.TestCase):
     '''
     Test Class to test the behaviour of the Article class
@@ -15,6 +14,8 @@ class ArticleTest(unittest.TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_article,Article))
+
+        return app
 
 
 if __name__ == '__main__':

@@ -1,18 +1,18 @@
 import urllib.request,json
-from .models import Article,Category,Sources,Headlines
-from newsapi import NewsApiClient
+from .models import Article, Category, Sources , Headlines
 
 api_key = None
-source_url = None
-newsapi = None
+
+source_url= None
+
 cat_url= None
 
 def configure_request(app):
-    global api_key,source_url, newsapi,cat_url
-    api_key = app.config['API_KEY']
-    source_url = app.config['NEWS_API_SOURCE_URL']
-    newsapi = NewsApiClient(api_key=api_key)
+    global api_key, source_url, cat_url
+    api_key = app.config['NEWS_API_KEY']
+    source_url= app.config['NEWS_API_SOURCE_URL']
     cat_url=app.config['CAT_API_URL']
+
 
 def get_source():
     '''
@@ -51,21 +51,22 @@ def process_results(source_list):
             source_results.append(source_object)
 
     return source_results
-def articles(id):
-    '''
-    function that gets all english news sources in a list
-    '''
-    source_url = url.format(source_id, key)
-    with urllib.request.urlopen(source_url) as url:
-        result = url.read()
-        response = json.loads(result)
 
-        article_results = []
+def article_source(id):
+    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
+    print(article_source_url)
+    with urllib.request.urlopen(article_source_url) as url:
+        article_source_data = url.read()
+        article_source_response = json.loads(article_source_data)
 
-        if response['articles']:
-            source_data_list = response['articles']
-            article_results = get_data(source_data_list)
-    return article_results
+        article_source_results = None
+
+        if article_source_response['articles']:
+            article_source_list = article_source_response['articles']
+            article_source_results = process_articles_results(article_source_list)
+
+
+    return article_source_results
 
 def process_articles_results(news):
     '''
@@ -85,18 +86,6 @@ def process_articles_results(news):
             article_source_results.append(article_objects)
 
     return article_source_results
-def headlines():
-    '''
-    function that gets all english news sources in a list
-    '''
-    res = newsapi.get_top_headlines(language='en', page_size='10', sources='cnn')
-    res_list =  res['articles']
-    trending = []
-    for item in res_list:
-        top_article = Headlines(item['title'], item['urlToImage'], item['url'])
-        trending.append(top_article)
-
-    return trending
 
 def get_category(cat_name):
     '''
@@ -115,3 +104,21 @@ def get_category(cat_name):
             get_cartegory_results = process_articles_results(get_cartegory_list)
 
     return get_cartegory_results
+
+def get_headlines():
+    '''
+    function that gets the response to the category json
+    '''
+    get_headlines_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey={}'.format(api_key)
+    print(get_headlines_url)
+    with urllib.request.urlopen(get_headlines_url) as url:
+        get_headlines_data = url.read()
+        get_headlines_response = json.loads(get_headlines_data)
+
+        get_headlines_results = None
+
+        if get_headlines_response['articles']:
+            get_headlines_list = get_headlines_response['articles']
+            get_headlines_results = process_articles_results(get_headlines_list)
+
+    return get_headlines_results
