@@ -1,5 +1,5 @@
 import unittest
-from ..models import Sources
+from .models import Sources
 
 class SourcesTest(unittest.TestCase):
     '''
@@ -23,8 +23,9 @@ class SourcesTest(unittest.TestCase):
         self.new_source.id = 'cnn-international'
         self.new_source.name='CNN'
 
+
     def test_instance(self):
-        self.assertTrue(isinstance(self.new_article,Article))
+        self.assertTrue(isinstance(self.new_source,Sources))
 
 
 if __name__ == '__main__':
