@@ -3,34 +3,15 @@ from .models import Article, Category, Sources , Headlines
 
 api_key = None
 
-source_url= None
+get_source_url= None
 
 cat_url= None
 
 def configure_request(app):
-    global api_key, source_url, cat_url
-    api_key = app.config['NEWS_API_KEY']
-    source_url= app.config['NEWS_API_SOURCE_URL']
+    global api_key, get_sources, cat_url
+    api_key = app.config['API_KEY']
+    get_sources_url= app.config['NEWS_API_SOURCE_URL']
     cat_url=app.config['CAT_API_URL']
-
-
-def get_source():
-    '''
-    Function that gets the json response to url request
-    '''
-    get_source_url= source_url.format(api_key)
-    print(get_source_url)
-    with urllib.request.urlopen(get_source_url) as url:
-        get_sources_data = url.read()
-        get_sources_response = json.loads(get_sources_data)
-
-        source_results = None
-
-        if get_sources_response['sources']:
-            source_results_list = get_sources_response['sources']
-            source_results = process_results(source_results_list)
-
-    return source_results
 
 def process_results(source_list):
     '''
@@ -47,13 +28,13 @@ def process_results(source_list):
         description = source_item.get('description')
         url = source_item.get('url')
         if id:
-            source_object = Source(id,name,description,url)
+            source_object = source(id,name,description,url)
             source_results.append(source_object)
 
     return source_results
 
 def article_source(id):
-    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,api_key)
+    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=6923221c2b374f8bbb9e30c6e2cbcfd1'(id,url)
     print(article_source_url)
     with urllib.request.urlopen(article_source_url) as url:
         article_source_data = url.read()
@@ -109,7 +90,7 @@ def get_headlines():
     '''
     function that gets the response to the category json
     '''
-    get_headlines_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey={}'.format(api_key)
+    get_headlines_url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=6923221c2b374f8bbb9e30c6e2cbcfd1'.format(api_key)
     print(get_headlines_url)
     with urllib.request.urlopen(get_headlines_url) as url:
         get_headlines_data = url.read()

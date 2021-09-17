@@ -9,14 +9,10 @@
         {% block title %} {% endblock title %}
     </title>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg p-0">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-        </button>
-        <a class="navbar-brand text-dark mx-auto" href="/"> <img src="{{ url_for('static', filename='img/global.jpg')}}" alt="logo" width="70">THE TRIBUNE</a>
-    </nav>
-
+      {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock %}
     <div>
         <!-- block content -->
         {% block content %} {% endblock content%}

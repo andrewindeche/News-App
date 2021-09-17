@@ -1,54 +1,36 @@
 {% extends "base.html" %}
 
-    {% block title %}THE TRIBUNE{% endblock %}
-    {% block content%}
-    {% block content %}
+{% block content%}
 <div class="container">
-    <!-- sources -->
-    <div class="nav-scroller bg-dark p-0">
+  <div class="nav-scroller bg-red p-0">
         <nav class="d-flex wrap justify-content-between">
-            {% for item in news_sources%}
-            <a href="/articles/{{source.id}}" class="p-2 text-light">{{item.author| upper }}</a> {% endfor %}
+            {% for source in sources%}
+            <a href="/articles/{{source.id}}" class="p-2 text-light"></a> {% endfor %}
         </nav>
     </div>
-    <div class="col-9">
-          <h1 align="center"> HEADLINE NEWS </h1>
+    <div class="col-30">
+          <h1 align="center"> In the Headlines.... </h1>
           <div class="container">
-            <div class="card-columns">
+              <div class="card-columns">
               {% for headlines in headlines %}
-
-              <div class="card">
-                <img class="card" src="{{headlines.image}}" alt="Card image cap" size="100px180">
+              <div class="card-block">
+                <img class="card-img" src="{{headlines.image_to_url}}" alt=""</img>
                 <div class="card-body">
                   <h5 class="card-title">{{headlines.author}}</h5>
                   <p class="card-text">{{headlines.description}}</p>
                   <a href="{{headlines.url}}">
-                    <p class="card-text">Click here for more details!</p>
+                    <p class="card-text">Go to Site</p>
                   </a>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted">Publish date:{{headlines.time}}</small>
+                  <small class="text-muted">Highlight:{{headlines.time}}</small>
+                  <br>
+                  <small class="text-muted" alt="">Authors:{{headlines.title}}</small>
                 </div>
               </div>
               {% endfor %}
             </div>
           </div>
         </div>
-
-    <!-- trending -->
-    <div class="row hidden-md-up mt-3">
-        {% for article in trending_article %}
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-block">
-                    <img src="{{article.url_to_image}}" class="card-img-top" alt="">
-                    <a href="{{article.url}} " class="card-link">
-                        <p class="card-text text-secondary">{{ article.title }}</p>
-                    </a>
-                </div>
-            </div>
         </div>
-        {% endfor %}
-    </div>
-    {% endblock %}
-</div>
+  {% endblock %}

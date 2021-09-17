@@ -2,10 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 font-family: 'Open Sans', sans-serif;
 
-
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+.container-fluid {
+  display: flex;
+}
+.col-9 {
+  overflow-y: auto;
+  height: 90vh; /* NEW */
+}
+#avatar{
+  width:180%;
+  height:80%;
 }

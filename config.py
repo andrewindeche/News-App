@@ -4,10 +4,9 @@ class Config:
     '''
     General configuration of parent class
     '''
-    NEWS_API_SOURCE_URL = 'https://newsapi.org/v2/everything?language=en&sources={}&apiKey={}'
-    NEWS_API_KEY = os.environ.get('NEWS_API_KEY')
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    CAT_API_URL='https://newsapi.org/v2/top-headlines?country=us&category={}&apiKey={}'
+    API_KEY = os.environ.get('API_KEY')
+    NEWS_API_SOURCE_URL ='https://newsapi.org/v2/top-headlines/sources?apiKey={6923221c2b374f8bbb9e30c6e2cbcfd1}'
+    CAT_API_URL='https://newsapi.org/v2/top-headlines?country=us&category={}&apiKey={6923221c2b374f8bbb9e30c6e2cbcfd1}'
 
 
 class ProductionConfig(Config):
@@ -32,5 +31,5 @@ class DevelopmentConfig(Config):
 
 config_options = {
     'dev': DevelopmentConfig,
-    'production': ProductionConfig
+    'prod': ProductionConfig
 }
