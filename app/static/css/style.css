@@ -12,11 +12,20 @@ font-family: 'Open Sans', sans-serif;
 .container-fluid {
   display: flex;
 }
-.col-9 {
-  overflow-y: auto;
-  height: 90vh; /* NEW */
-}
 #avatar{
-  width:180%;
-  height:80%;
+  width:50%;
+  height:50%;
+}
+h1{
+  display : flex;
+  justify-content: center;
+}
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
+form {
+ text-align: left;
+ position: absolute;
+ top: 50vh;
+ left: 50vw;
 }
