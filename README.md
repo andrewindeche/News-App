@@ -22,10 +22,10 @@
     <h1>Project Set-up Instructions</h1>
      SetUp / Installation Requirements
 Prerequisites
-python3.9.5
-pip
-virtualenv
-
+<li>python3.9.5</li>
+<li>pip</li>
+<li>virtual environment<li>
+   See requirements.txt for all package installations required
 <h1>Cloning Into your terminal:</h1>
 
   $ git clone https://github.com/AndrewIndeche/News-App
