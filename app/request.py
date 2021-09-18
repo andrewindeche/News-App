@@ -52,7 +52,7 @@ def process_results(source_list):
     return source_results
 
 def article_source(id):
-    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,url)
+    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(id,url,api_key)
     print(article_source_url)
     with urllib.request.urlopen(article_source_url) as url:
         article_source_data = url.read()
