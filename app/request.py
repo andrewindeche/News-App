@@ -3,7 +3,7 @@ from .models import Article, Category, Sources , Headlines
 
 api_key = None
 
-get_source_url= None
+source_url= None
 
 cat_url= None
 
@@ -12,6 +12,24 @@ def configure_request(app):
     api_key = app.config['API_KEY']
     get_sources_url= app.config['NEWS_API_SOURCE_URL']
     cat_url=app.config['CAT_API_URL']
+
+def get_source(source):
+    '''
+    Function that gets the json response to url request
+    '''
+    get_source_url= 'https://newsapi.org/v2/everything?language=en&sources={}&apiKey=6923221c2b374f8bbb9e30c6e2cbcfd1'.format(source,api_key)
+    print(get_source_url)
+    with urllib.request.urlopen(get_source_url) as url:
+        get_sources_data = url.read()
+        get_sources_response = json.loads(get_sources_data)
+
+        source_results = None
+
+        if get_sources_response['sources']:
+            source_results_list = get_sources_response['sources']
+            source_results = process_results(source_results_list)
+
+    return source_results
 
 def process_results(source_list):
     '''
@@ -34,7 +52,7 @@ def process_results(source_list):
     return source_results
 
 def article_source(id):
-    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=6923221c2b374f8bbb9e30c6e2cbcfd1'(id,url)
+    article_source_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=6923221c2b374f8bbb9e30c6e2cbcfd1'.format(id,url)
     print(article_source_url)
     with urllib.request.urlopen(article_source_url) as url:
         article_source_data = url.read()
@@ -72,7 +90,7 @@ def get_category(cat_name):
     '''
     function that gets the response to the category json
     '''
-    get_category_url = cat_url.format(cat_name,api_key)
+    get_category_url = 'https://newsapi.org/v2/top-headlines?country=us&category={}&apiKey=6923221c2b374f8bbb9e30c6e2cbcfd1'.format(cat_name,api_key)
     print(get_category_url)
     with urllib.request.urlopen(get_category_url) as url:
         get_category_data = url.read()

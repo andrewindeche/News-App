@@ -12,12 +12,12 @@ class Headlines:
     '''
     Article Class that instantiates objects of the headlines categories objects of the news sources
     '''
-    def __init__(self,author,description,time,url,image,title):
-        self.author = author
+    def __init__(self,image,author,description,time,url,title):
+        self.image = image
         self.description = description
         self.time= time
         self.url = url
-        self.image = image
+        self.author = author
         self.title = title
 
 class Article:
