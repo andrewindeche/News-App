@@ -1,0 +1,27 @@
+{% extends 'base.html'%} {% block content %}
+<body>
+  <h1 align="center" class="text-uppercase"><strong>{{cat}}<strong></h1>
+    <div class="container">
+      <div class="card-columns">
+      {% for category in category %}
+      <div class="card">
+      <img src="{{category.url}}" alt=" " class="card img cap" size="400px300">
+        <div class="card-body">
+          <p class="card-title"><strong>{{category.time}}<strong></p>
+          <medium class="text" style="font-weight:normal">{{category.author}}</medium>
+            </div>
+        <div class="card-footer">
+          <a href="{{category.url}}">
+            <p class="card-text">MORE</p>
+          </a>
+          <br>
+          <small class="card-text">{{category.description}}</small>
+          <br><br>
+          <small class="bottom" alt=""><strong>{{category.title}}<strong></small>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+      {% endblock %}
+  </body>

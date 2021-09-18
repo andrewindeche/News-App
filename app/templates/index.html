@@ -1,13 +1,7 @@
 {% extends "base.html" %}
-
+<link rel="stylesheet" href="{{url_for('static',filename='./css/style.css')}}">
 {% block content%}
 <div class="container">
-  <div class="nav-scroller bg-red p-0">
-        <nav class="d-flex wrap justify-content-between">
-            {% for source in sources%}
-            <a href="/articles/{{source.id}}" class="p-2 text-light"></a> {% endfor %}
-        </nav>
-    </div>
     <div class="col-30">
           <div class="container">
               <div class="card-columns">
@@ -15,16 +9,17 @@
               <div class="card">
               <img src="{{headlines.url}}" alt=" " class="card img cap" size="400px300">
                 <div class="card-body">
-                  <h5 class="card-title">{{headlines.author}}</h5>
-                  <p class="card-text">{{headlines.description}}</p>
-                  <a href="{{headlines.url}}">
-                    <p class="card-text">Go to Site</p>
-                  </a>
-                </div>
+                  <p class="card-title"><strong>{{headlines.time}}<strong></p>
+                  <medium class="text" style="font-weight:normal">{{headlines.author}}</medium>
+                    </div>
                 <div class="card-footer">
-                  <small class="bottom"><strong>Highlight:{{headlines.time}}<strong></small>
+                  <a href="{{headlines.url}}">
+                    <p class="card-text">MORE</p>
+                  </a>
                   <br>
-                  <small class="bottom" alt=""><strong>Authors:{{headlines.title}}<strong></small>
+                  <small class="card-text">{{headlines.description}}</small>
+                  <br><br>
+                  <small class="bottom" alt=""><strong>{{headlines.title}}<strong></small>
                 </div>
               </div>
               {% endfor %}
