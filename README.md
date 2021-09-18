@@ -10,7 +10,8 @@
     <li>1.Python CLI/Flask to create structure of the News-APP </li>
     <li>2.Python/flask extensions such as-Python_script,NewsAPI </li>
     <li>3.Bookstrap 5 for styling the index page </li>
-    <li>HTML 5
+    <li>HTML 5</li>
+    <li>Heroku for deployment</li>
     </div>
     </div>
     <h1> Authors</h1>
@@ -24,8 +25,8 @@ Prerequisites
 python3.9.5
 pip
 virtualenv
-Cloning
-In your terminal:
+
+<h1>Cloning Into your terminal:</h1>
 
   $ git clone https://github.com/AndrewIndeche/News-App
   $ cd NewsPI
@@ -61,7 +62,7 @@ To run the tests for the class files:
 
   $ python3.9 manage.py tests
      <h1>Bugs</h1>
-     <li>Flask_script refusing to open page solution:Activate the virtual form of flask with other packages in the requirements.txt</li>
+     <li>Flask_script refusing to open page solution:Activate the virtual environment of flask and install all necessary packages (see requirements.txt)</li>
      </div>
      </div>
       Copyright (c) 2021 Andrew Indeche
