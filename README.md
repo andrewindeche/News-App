@@ -63,7 +63,9 @@ To run the tests for the class files:
   $ python3.9 manage.py tests
      <h1>Bugs</h1>
      <li>Flask_script refusing to open page solution:Activate the virtual environment of flask and install all necessary packages (see requirements.txt)</li>
-     </div>
+     <li>sources path in views.py and request.py ommited due to some conflicts.</li>
+     <li>Jinja has mixed up {{text}} reference templates<li>
+   </div>
      </div>
       Copyright (c) 2021 Andrew Indeche
-   By using and/or copying this project, or the license document from which this statement is linked, you (the licensee) agree that you have read, understood, and will comply with conditions of use.
+   By using and/or copying this project, or the license document from which this statement is linked, you (the licensee) agree that you have read, understood, and will comply with conditions of use.App is free to use.Enjoy...
