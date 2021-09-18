@@ -1,7 +1,7 @@
    <body>
     <h1>News-API<h1>
      <h2>Project description</h2>
-  <p> The project is a News-API created using Python Flask that displays News and enables users to preview news form various sources</p>
+  <p> The project is a News-APP created using Python Flask and a News API that displays News and enables users to preview news form various sources</p>
      </div>
      </div>
          </ul>
