@@ -1,0 +1,3 @@
+[console_scripts]
+googlefonts-installer = googlefonts_installer:main
+
