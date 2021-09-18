@@ -2,16 +2,18 @@
 
 {% block content%}
 <div class="container">
-      <nav class="d-flex wrap justify-content-between">
+  <div class="nav-scroller bg-red p-0">
+        <nav class="d-flex wrap justify-content-between">
             {% for source in sources%}
             <a href="/articles/{{source.id}}" class="p-2 text-light"></a> {% endfor %}
         </nav>
-      <div class="col-30">
+    </div>
+    <div class="col-30">
           <div class="container">
               <div class="card-columns">
               {% for headlines in headlines %}
-              <div class="card-block">
-              <img src="{{headlines.image}}" alt=" " class="card-img-top" size="100px180">
+              <div class="card">
+              <img src="{{headlines.url}}" alt=" " class="card img cap" size="400px300">
                 <div class="card-body">
                   <h5 class="card-title">{{headlines.author}}</h5>
                   <p class="card-text">{{headlines.description}}</p>
@@ -20,9 +22,9 @@
                   </a>
                 </div>
                 <div class="card-footer">
-                  <small class="text-muted">Highlight:{{headlines.time}}</small>
+                  <small class="bottom"><strong>Highlight:{{headlines.time}}<strong></small>
                   <br>
-                  <small class="text-muted" alt="">Authors:{{headlines.title}}</small>
+                  <small class="bottom" alt=""><strong>Authors:{{headlines.title}}<strong></small>
                 </div>
               </div>
               {% endfor %}
